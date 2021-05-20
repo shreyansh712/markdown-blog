@@ -1,10 +1,15 @@
 const express = require('express')
 const app = express()
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser')
 const articleRouter = require("./routes/articles");
 app.set('view engine', 'ejs');
 const port = 3000
 
+mongoose.connect('mongodb://localhost/blog', {useNewUrlParser: true, useUnifiedTopology: true});
+
 app.use('/articles', articleRouter);
+app.use(express.urlencoded({extended: false}));
 
 app.get('/', (req, res) => {
     const articles = [{
