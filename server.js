@@ -8,8 +8,9 @@ const port = 3000
 
 mongoose.connect('mongodb://localhost/blog', {useNewUrlParser: true, useUnifiedTopology: true});
 
-app.use('/articles', articleRouter);
 app.use(express.urlencoded({extended: false}));
+app.use('/articles', articleRouter);
+
 
 app.get('/', (req, res) => {
     const articles = [{
