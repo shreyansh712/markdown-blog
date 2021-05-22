@@ -1,9 +1,9 @@
 const express = require('express');
-const Article = require("./../routes/articles.js")
+const Article = require("./../models/article")
 const router = express.Router();
 
 router.get("/new",function(req,res){
-    res.render('articles/new');
+    res.render('articles/new',{ article: article});
 })
 
 router.get("/:id",(req,res)=>{
@@ -25,8 +25,5 @@ catch(e){
 }
 })
 
-router.get("/",(req,res)=>{
-    console.log("hello");
-})
 
 module.exports = router;
